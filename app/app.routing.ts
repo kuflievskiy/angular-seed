@@ -8,6 +8,7 @@ const appRoutes: Routes = [
     { path: '', component: AlbumsComponent }
     ,{ path: 'albums', component: AlbumsComponent }
     ,{ path: 'contact',component: ContactComponent }
+    , { path : '**', redirectTo: 'albums'}
 ];
 
 export const appRoutingProviders: any[] = [
