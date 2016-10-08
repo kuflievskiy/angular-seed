@@ -1,18 +1,18 @@
 <h1>Contact</h1>
-<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
     <div class="form-group">
         <label for="name">Name</label>
-        <input 
-			ngModel
-            #name="ngModel"
+        <input
+            formControlName="name"
+            name="name"
             id="name" 
             type="text" 
             class="form-control" 
             required>
-        <div *ngIf="name.touched && name.errors">
+        <div *ngIf="form.controls.name.touched && form.controls.name.errors">
             <div 
                 class="alert alert-danger" 
-                *ngIf="name.errors.required">
+                *ngIf="form.controls.name.errors.required">
                 Name is required.
             </div>
         </div>
@@ -20,8 +20,8 @@
     <div class="form-group">
         <label for="comment">Comment</label>
         <textarea
-			ngModel
-            #comment="ngModel" 
+            formControlName="comment"
+            name="comment"
             id="comment" 
             cols="30" 
             rows="10" 
@@ -29,10 +29,10 @@
             required>
         </textarea>
         <div 
-            *ngIf="comment.touched && !comment.valid" 
+            *ngIf="form.controls.comment.touched && !form.controls.comment.valid"
             class="alert alert-danger">
             Comment is required.
         </div>
     </div>
-    <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
 </form>
