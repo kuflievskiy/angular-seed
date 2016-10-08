@@ -1,5 +1,10 @@
 import {Component, OnInit} from '@angular/core';
+
+//import {Observable} from 'rxjs/Observable';
+
 import {PhotoService} from './photo.service';
+import { Router, ActivatedRoute }   from '@angular/router';
+
 
 @Component({
     template: `
@@ -16,11 +21,33 @@ export class AlbumComponent implements OnInit {
     isLoading = true;
     photos;
 
-    constructor(private _photoService: PhotoService){
+    id:number;
+    constructor(private _photoService: PhotoService,
+                private route: ActivatedRoute,
+                private router: Router
+
+    ){
+        console.log('album');
+        //console.log(this.route);
+        //console.log(this.router);
+
+
     }
     
     ngOnInit(){
-        this._photoService.getPhotos(1)
+
+        console.log('fetched value');
+        console.log(this.route.params.getValue('id').id);
+
+        this.id = this.route.params.getValue('id').id;
+        /*
+        if((<any>this.route.params).value.id){
+            this.id=(<any>this.route.params).value.id;
+            console.log('ID = '+ this.id);
+        }
+        */
+
+        this._photoService.getPhotos(this.id)
             .subscribe(photos => {
                 this.isLoading = false;
                 this.photos = photos;

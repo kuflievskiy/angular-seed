@@ -5,8 +5,11 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   template: `<h1>My First Angular App</h1>
 
-<a routerLink="albums">Albums</a>
-<a routerLink="contact">Contact</a>
+    <nav>
+      <a routerLink="albums">Albums</a>
+      <a routerLink="contact">Contact</a>    
+    </nav>
+
 		<!-- Routed views go here -->
         <router-outlet></router-outlet>
   `

@@ -10,7 +10,10 @@ import {Http} from '@angular/http';
         </div>
         <ul>
             <li *ngFor="let album of albums">
+                <a routerLink="/album/{{album.id}}">
                 {{ album.title }}
+                </a>
+                
             </li> 
         </ul>
     `
