@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 
 //import {Observable} from 'rxjs/Observable';
 
@@ -17,10 +17,10 @@ import { Router, ActivatedRoute }   from '@angular/router';
         </div>
     `
 })
-export class AlbumComponent implements OnInit {
+export class AlbumComponent implements OnInit, OnDestroy {
     isLoading = true;
     photos;
-
+    sub;
     id:number;
     constructor(private _photoService: PhotoService,
                 private route: ActivatedRoute,
@@ -37,20 +37,28 @@ export class AlbumComponent implements OnInit {
     ngOnInit(){
 
         console.log('fetched value');
-        console.log(this.route.params.getValue('id').id);
+ //       console.log(this.route.params.getValue('id').id);
 
-        this.id = this.route.params.getValue('id').id;
-        /*
-        if((<any>this.route.params).value.id){
-            this.id=(<any>this.route.params).value.id;
-            console.log('ID = '+ this.id);
-        }
-        */
+        //this.id = this.route.params.getValue('id').id;
+        console.log(this.route.params);
 
-        this._photoService.getPhotos(this.id)
+        var self = this;
+
+        // Subscribe to route params
+        this.sub = this.route.params.subscribe(x=>{
+            this.id = parseInt((<any>x).id,10);
+            console.log(this.id);
+        });
+
+        this._photoService.getPhotos((<any>this.id))
             .subscribe(photos => {
                 this.isLoading = false;
                 this.photos = photos;
             });
+    }
+
+    ngOnDestroy() {
+        // Clean sub to avoid memory leak
+        this.sub.unsubscribe();
     }
 }
