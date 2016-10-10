@@ -8,6 +8,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpModule }    from '@angular/http';
 
 import { AlbumComponent } from './album.component';
+import {AlbumMainComponent} from './album-main.component';
+
 import { AlbumsComponent } from './albums.component';
 import { ContactComponent } from './contact.component';
 import { PhotoService } from './photo.service';
@@ -28,7 +30,10 @@ import {FormsModule, Form, ReactiveFormsModule} from "@angular/forms";
   ]
   ,declarations: [ 
 	AppComponent
+	
+	,AlbumMainComponent
 	,AlbumComponent
+
 	,AlbumsComponent
 	, ContactComponent
   ]

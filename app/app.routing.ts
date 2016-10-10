@@ -4,7 +4,7 @@ import {ContactComponent} from './contact.component';
 
 import {AlbumsComponent} from './albums.component';
 import {AlbumComponent} from './album.component';
-
+import {AlbumMainComponent} from './album-main.component';
 
 ///
 import {Injectable} from "@angular/core";
@@ -26,7 +26,16 @@ class CanDeactivateContactComponent implements CanDeactivate<ContactComponent> {
 const appRoutes: Routes = [
     { path: '', component: AlbumsComponent }
     ,{ path: 'albums', component: AlbumsComponent }
-    ,{ path: 'album/:id', component: AlbumComponent }
+	
+	//,{ path: 'album/:id', component: AlbumComponent  }
+    
+	,{ path: 'album', component: AlbumMainComponent 
+		,children : [
+				{ path : ':id', component: AlbumComponent }
+		]
+	}
+	
+		
     ,{ path: 'contact',component: ContactComponent,  canDeactivate: [CanDeactivateContactComponent] }
     , { path : '**', redirectTo: 'albums'}
 ];

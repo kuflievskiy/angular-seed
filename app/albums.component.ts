@@ -16,6 +16,8 @@ import {Http} from '@angular/http';
                 
             </li> 
         </ul>
+		
+
     `
 })
 export class AlbumsComponent implements OnInit {
