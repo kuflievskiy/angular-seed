@@ -7,8 +7,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { HttpModule }    from '@angular/http';
 
-import { AlbumComponent } from './album.component';
-import {AlbumMainComponent} from './album-main.component';
+import { AlbumComponent, AlbumMainComponent } from './album/index';
 
 import { AlbumsComponent } from './albums.component';
 import { ContactComponent } from './contact.component';

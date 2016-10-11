@@ -3,8 +3,8 @@ import {ModuleWithProviders} from "@angular/core";
 import {ContactComponent} from './contact.component';
 
 import {AlbumsComponent} from './albums.component';
-import {AlbumComponent} from './album.component';
-import {AlbumMainComponent} from './album-main.component';
+
+import { AlbumComponent, AlbumMainComponent } from './album/index';
 
 ///
 import {Injectable} from "@angular/core";

@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 
 //import {Observable} from 'rxjs/Observable';
 
-import {PhotoService} from './photo.service';
+import {PhotoService} from './../../photo.service';
 import { Router, ActivatedRoute }   from '@angular/router';
 
 
