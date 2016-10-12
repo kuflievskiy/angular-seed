@@ -7,32 +7,31 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { HttpModule }    from '@angular/http';
 
-import { AlbumComponent, AlbumMainComponent } from './album/index';
-
 import { AlbumsComponent } from './albums.component';
 import { ContactComponent } from './contact.component';
-import { PhotoService } from './photo.service';
+import {PhotoService} from './shared/services/photo.service';
 
 
 import {FormsModule, Form, ReactiveFormsModule} from "@angular/forms";
+
+import { AlbumModule } from './album/album.module';
 
 @NgModule({
   imports:      [ 
 	BrowserModule 
 	,routing
-	
 	, HttpModule
 	
 	,FormsModule
 	//, Form
 	, ReactiveFormsModule
+	
+	// custom modules
+	,AlbumModule
   ]
   ,declarations: [ 
 	AppComponent
 	
-	,AlbumMainComponent
-	,AlbumComponent
-
 	,AlbumsComponent
 	, ContactComponent
   ]

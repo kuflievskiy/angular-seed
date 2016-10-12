@@ -26,16 +26,6 @@ class CanDeactivateContactComponent implements CanDeactivate<ContactComponent> {
 const appRoutes: Routes = [
     { path: '', component: AlbumsComponent }
     ,{ path: 'albums', component: AlbumsComponent }
-	
-	//,{ path: 'album/:id', component: AlbumComponent  }
-    
-	,{ path: 'album', component: AlbumMainComponent 
-		,children : [
-				{ path : ':id', component: AlbumComponent }
-		]
-	}
-	
-		
     ,{ path: 'contact',component: ContactComponent,  canDeactivate: [CanDeactivateContactComponent] }
     , { path : '**', redirectTo: 'albums'}
 ];
